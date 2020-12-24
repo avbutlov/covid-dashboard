@@ -1,0 +1,36 @@
+
+
+.country-container {
+  height: 781px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+
+  td {
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #a5d6a7;
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .active td {
+    background-color: #a5d6a7;
+  }
+
+}
+
+.country-item {
+
+  &__covid-info {
+    color: #bf360c;
+    font-weight: 600;
+  }
+}

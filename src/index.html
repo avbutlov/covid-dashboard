@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>COVID-19 Dashboard</title>
+</head>
+
+<body>
+  <div class="container1">
+    <div class="row">
+      <div class="col s12 l6">
+
+        <div class="card-panel main-title">
+          COVID-19 Dashboard <span class="current-country"></span>
+        </div>
+
+        <div class="card-panel">
+          <button type="button" class="fullscreen-btn"><i class="material-icons">open_in_full</i></button>
+          <div class="table"></div>
+        </div>
+
+        <div class="card-panel">
+          <button type="button" class="fullscreen-btn"><i class="material-icons">open_in_full</i></button>
+          <div class="input-field">
+            <input class="search-country use-keyboard-input" type="text" value="" placeholder="Search country">
+          </div>
+          <div class="country"></div>
+        </div>
+
+      </div>
+
+      <div class="col s12 l6">
+
+        <div class="card-panel map-card">
+          <button type="button" class="fullscreen-btn"><i class="material-icons">open_in_full</i></button>
+          <div class="map" id="map">
+            <div class="map-info"></div>
+          </div>
+          <div class="control-panel"></div>
+        </div>
+        <div class="card-panel">
+          <button type="button" class="fullscreen-btn"><i class="material-icons">open_in_full</i></button>
+
+          <canvas class="graph-chart"></canvas>
+          <div class="graph"></div>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <div class="card-panel">
+          <div class="footer">
+            <div class="footer-item">@ 2020</div>
+            <div class="footer-item">
+              <a href="https://rs.school/js/"><img src="assets/img/rs_school_js.svg" alt="rs.school"></a>
+            </div>
+            <div class="footer-item">
+              <a href="https://github.com/kvalexandr">kvalexandr</a>
+            </div>
+            <div class="footer-item">
+              <a href="https://github.com/avbutlov">avbutlov</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
