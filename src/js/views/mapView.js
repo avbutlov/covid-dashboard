@@ -158,7 +158,10 @@ class MapView extends View {
       }
     });
 
-    this.geojson = geojson;
+if (!this._parentElement.querySelector('.leaflet-interactive')) {
+      document.location.reload();
+    }
+
   }
 
   _generateHTML() {
