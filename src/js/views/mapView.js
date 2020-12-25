@@ -1,8 +1,8 @@
 import { MAP_API_URL } from "../config";
-import { fomatNumber } from '../core/utils';
+import { fomatNumber } from "../core/utils";
 import View from "./View";
-import L from 'leaflet';
-import * as model from '../models/model'
+import L from "leaflet";
+import * as model from "../models/model";
 
 class MapView extends View {
     constructor() {
@@ -10,14 +10,15 @@ class MapView extends View {
         this._data = {};
         this._parentElement = document.querySelector(".map-card");
         this._HTMLConatainer = document.querySelector(".map-info");
-        this._controlPanel = document.querySelector('.control-panel');
-        this._map = L.map("map", { worldCopyJump: true }).setView([0, 0], 2).invalidateSize();
+        this._controlPanel = document.querySelector(".control-panel");
+        this._map = L.map("map", { worldCopyJump: true })
+            .setView([0, 0], 2)
+            .invalidateSize();
         this._layerGroup = L.layerGroup().addTo(this._map);
         this._selectedLayer = L.layerGroup().addTo(this._map);
         this._tileLayer = L.tileLayer(MAP_API_URL, {
             noWrap: false,
         }).addTo(this._map);
-
     }
 
     render(state) {
@@ -33,7 +34,10 @@ class MapView extends View {
         this._countriesCoordinates = state.countriesCoordinates;
         this._generateMapLayers();
         this._HTMLConatainer.insertAdjacentHTML("afterbegin", this._generateHTML());
-        this._controlPanel.insertAdjacentHTML('afterbegin', this._generateControls());
+        this._controlPanel.insertAdjacentHTML(
+            "afterbegin",
+            this._generateControls()
+        );
     }
 
     addHandlerSelectCountryOnMap(handler) {
@@ -44,16 +48,15 @@ class MapView extends View {
     }
 
     _generateMapLayers() {
-
-
-        this._parentElement.querySelector('.fullscreen-btn').addEventListener('click', () => {
-            this._map.invalidateSize();
-        })
+        this._parentElement
+            .querySelector(".fullscreen-btn")
+            .addEventListener("click", () => {
+                this._map.invalidateSize();
+            });
 
         const selectedCountryGeoJSON = this._countriesCoordinates.find(
             (el) => el.id === this._selectCountry
         );
-
 
         function getColorForLayers(param) {
             return param > 15 ?
@@ -122,8 +125,16 @@ class MapView extends View {
 
         const openPopupInfo = (e) => {
             const layer = e.target;
-            let parameterCases = this._allCountry.find(countryName => countryName.countryInfo.iso3 === layer.feature.id);
-            layer.bindPopup(`${layer.feature.properties.name}, ${fomatNumber(parameterCases[this._dataType][this._selectParam])} ${this._selectParam}`).openPopup();
+            let parameterCases = this._allCountry.find(
+                (countryName) => countryName.countryInfo.iso3 === layer.feature.id
+            );
+            layer
+                .bindPopup(
+                    `${layer.feature.properties.name}, ${fomatNumber(
+            parameterCases[this._dataType][this._selectParam]
+          )} ${this._selectParam}`
+                )
+                .openPopup();
         };
 
         const closePopupInfo = (e) => {
@@ -158,17 +169,20 @@ class MapView extends View {
                 this._map.fitBounds(e.getBounds(), { maxZoom: 3 });
             }
         });
-        if (!this._parentElement.querySelector('.leaflet-interactive')) {
-            this._map.remove();
-            this._map = L.map("map", { worldCopyJump: true }).setView([0, 0], 2).invalidateSize();
-            this._layerGroup = L.layerGroup().addTo(this._map);
-            this._selectedLayer = L.layerGroup().addTo(this._map);
-            this._tileLayer = L.tileLayer(MAP_API_URL, {
-                noWrap: false,
-            }).addTo(this._map);
-            this.render(model.state);
-        }
-
+        setTimeout(() => {
+            if (!this._parentElement.querySelector(".leaflet-interactive")) {
+                this._map.remove();
+                this._map = L.map("map", { worldCopyJump: true })
+                    .setView([0, 0], 2)
+                    .invalidateSize();
+                this._layerGroup = L.layerGroup().addTo(this._map);
+                this._selectedLayer = L.layerGroup().addTo(this._map);
+                this._tileLayer = L.tileLayer(MAP_API_URL, {
+                    noWrap: false,
+                }).addTo(this._map);
+                this.render(model.state);
+            }
+        }, 0);
     }
 
     _generateHTML() {
@@ -213,7 +227,6 @@ class MapView extends View {
   ${super._generateHTMLTab(this._dataType)}
   `;
   }
-
 }
 
 export default new MapView();
