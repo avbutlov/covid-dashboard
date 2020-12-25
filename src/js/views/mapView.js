@@ -171,16 +171,7 @@ class MapView extends View {
         });
         setTimeout(() => {
             if (!this._parentElement.querySelector(".leaflet-interactive")) {
-                this._map.remove();
-                this._map = L.map("map", { worldCopyJump: true })
-                    .setView([0, 0], 2)
-                    .invalidateSize();
-                this._layerGroup = L.layerGroup().addTo(this._map);
-                this._selectedLayer = L.layerGroup().addTo(this._map);
-                this._tileLayer = L.tileLayer(MAP_API_URL, {
-                    noWrap: false,
-                }).addTo(this._map);
-                this.render(model.state);
+                document.location.reload();
             }
         }, 0);
     }
