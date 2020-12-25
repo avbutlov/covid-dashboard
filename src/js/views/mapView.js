@@ -157,10 +157,12 @@ class MapView extends View {
         this._map.fitBounds(e.getBounds(), { maxZoom: 3 });
       }
     });
-
+setTimeout(() => {
 if (!this._parentElement.querySelector('.leaflet-interactive')) {
       document.location.reload();
-    }
+    
+}, 0)
+}
 
   }
 
