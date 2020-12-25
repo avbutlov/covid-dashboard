@@ -169,6 +169,11 @@ class MapView extends View {
                 this._map.fitBounds(e.getBounds(), { maxZoom: 3 });
             }
         });
+
+        const reloadMap = () => {
+            const content = this._parentElement.innerHTML;
+            this._parentElement.innerHTML = content;
+        }
         setTimeout(() => {
             if (!this._parentElement.querySelector(".leaflet-interactive")) {
                 document.location.reload();
