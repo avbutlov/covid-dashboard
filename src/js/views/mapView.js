@@ -42,7 +42,7 @@ class MapView extends View {
     });
   }
 
-  async _generateMapLayers() {
+  _generateMapLayers() {
 
   
   this._parentElement.querySelector('.fullscreen-btn').addEventListener('click', () => {
@@ -96,7 +96,7 @@ class MapView extends View {
       };
     }
 
-    let geojson = await L.geoJson(this._countriesCoordinates, {
+    let geojson = L.geoJson(this._countriesCoordinates, {
       style: setGlobalStyle,
     }).addTo(this._layerGroup);
 
