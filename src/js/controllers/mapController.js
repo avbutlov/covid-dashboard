@@ -22,8 +22,7 @@ class MapController extends Controller {
           super.tableView().render(model.state);
           super.mapView().render(model.state);
       }
-  
-  
+
   
         init() {
           this.showMap();
